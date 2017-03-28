@@ -1,0 +1,58 @@
+name: m2eepy27
+channels:
+- anaconda
+- defaults
+dependencies:
+- curl=7.52.1=vc9_0
+- gdal=2.1.0=py27_0
+- geos=3.5.0=vc9_0
+- hdf4=4.2.12=vc9_0
+- hdf5=1.8.15.1=vc9_4
+- jpeg=8d=vc9_2
+- kealib=1.4.6=vc9_0
+- libgdal=2.1.0=vc9_0
+- libnetcdf=4.3.3.1=vc9_4
+- libtiff=4.0.6=vc9_2
+- mkl=2017.0.1=0
+- numpy=1.12.1=py27_0
+- proj4=4.9.2=vc9_0
+- xerces-c=3.1.4=vc9_0
+- zlib=1.2.8=vc9_3
+- pip=9.0.1=py27_1
+- python=2.7.13=0
+- setuptools=27.2.0=py27_1
+- vs2008_runtime=9.00.30729.5054=0
+- wheel=0.29.0=py27_0
+- pip:
+  - asn1crypto==0.22.0
+  - boto==2.42.0
+  - cffi==1.10.0
+  - crcmod==1.7
+  - cryptography==1.8.1
+  - earthengine-api==0.1.108
+  - enum34==1.1.6
+  - funcsigs==1.0.2
+  - gcs-oauth2-boto-plugin==1.14
+  - google-api-python-client==1.6.2
+  - google-apitools==0.5.3
+  - gsutil==4.24
+  - httplib2==0.10.3
+  - idna==2.5
+  - ipaddress==1.0.18
+  - mock==2.0.0
+  - oauth2client==2.2.0
+  - packaging==16.8
+  - pbr==2.0.0
+  - pyasn1==0.2.3
+  - pyasn1-modules==0.0.8
+  - pycparser==2.17
+  - pyopenssl==16.2.0
+  - pyparsing==2.2.0
+  - python-gflags==3.1.1
+  - retry-decorator==1.1.0
+  - rsa==3.4.2
+  - six==1.10.0
+  - socksipy-branch==1.1
+  - uritemplate==3.0.0
+prefix: C:\Users\ambell\AppData\Local\Continuum\Anaconda3\envs\m2eepy27
+
