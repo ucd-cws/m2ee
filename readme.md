@@ -11,7 +11,7 @@ This script will take an .img convert it to a geotiff and upload it to the CWS's
 - run `conda env create -f environment.yml`
 - authenticate earthengine and gsutil
 - update `config.py` for configuration paths for the bucket, assetid, path to source file
-- change `run.bat` to match the anaconda install location `{anaconda}\Scripts\activate.bat`
+- change `run.bat` to match the anaconda install location `{anaconda install location}\Scripts\activate.bat`(Hint the `{anaconda install location}` is the path in parenthesis when you open a new anaconda prompt). 
 
 ### Authenticating Accounts
 
