@@ -72,6 +72,20 @@ def buck2ee(bucket_file, assetid):
 	return
 
 
+def rmasset(assetid):
+	"""
+	Removes an EarthEngine Asset
+	:param assetid: full path for the destination EE asset (ie users/username/collection/assetname)
+	:return:
+	"""
+	print("Deleting {}".format(assetid))
+	p = subprocess.Popen(['earthengine', 'rm', assetid], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = p.communicate()
+	if p.returncode != 0:
+		print("{} \n {}".format(output, error))
+	return
+
+
 def main(image_file, geotif, ee_asset_path, bucket):
 
 	# convert img to geotiff
@@ -79,6 +93,9 @@ def main(image_file, geotif, ee_asset_path, bucket):
 
 	# upload tif to bucket
 	uploadtobucket(bucket, geotif)
+
+	# remove any existing files for the asset path
+	rmasset(ee_asset_path)
 
 	# copy to earth engine
 	basename = os.path.basename(geotif)
