@@ -16,10 +16,12 @@ This script will take an .img convert it to a geotiff and upload it to the CWS's
 
 ### Authenticating Accounts
 
-Make sure the virtual env is activated `activate m2eepy27` then run `earthengine authenticate`, sign into the shared cws EE account ucd.cws.ee.data@gmail.com in the browswer window that opens. Copy the auth code back to the command line. 
+Make sure the virtual env is activated `activate m2eepy27` then run `earthengine authenticate`, sign into the shared cws EE account ucd.cws.ee.data@gmail.com in the browswer window that opens. Copy the auth code back to the command line.
+
 
 Run `gsutil config` and follow instructions to copy the auth code
 
+gsutil will ask "What is your project-id?" This is the name of project where the google bucket was setup.
 
 ### Detailed Setup Notes
 

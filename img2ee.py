@@ -86,7 +86,50 @@ def rmasset(assetid):
 	return
 
 
-def main(image_file, geotif, ee_asset_path, bucket):
+def getMostRecentTask():
+	"""
+	Gets the most recent EE task
+	:return:
+	"""
+	p = subprocess.Popen(['earthengine', 'task', 'list'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	p.stdout.seek(0)
+	out = p.stdout.read()
+	recent_task = out.splitlines()[0]
+	print(recent_task)
+	task_num = recent_task.split()[0]
+	print(task_num)
+	return task_num
+
+
+def wait4task(task):
+	"""
+	Waits for a task to finish uploading the EarthEngine Asset
+	:param task:
+	:return:
+	"""
+	print("Waiting for Asset Ingestion {}".format(task))
+	p = subprocess.Popen(['earthengine', 'task', 'wait', task], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = p.communicate()
+	if p.returncode != 0:
+		print("{} \n {}".format(output, error))
+	return
+
+
+def makeAssetPublic(assetid):
+	"""
+	Makes EarthEngine Asset public
+	:param assetid: full path for the destination EE asset (ie users/username/collection/assetname)
+	:return:
+	"""
+	print("Making asset publicly available")
+	p = subprocess.Popen(['earthengine', 'acl', 'set', 'public', assetid], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = p.communicate()
+	if p.returncode != 0:
+		print("{} \n {}".format(output, error))
+	return
+
+
+def main(image_file, geotif, ee_asset_path, bucket, public=True):
 
 	# convert img to geotiff
 	img2geotiff(image_file, geotif)
@@ -102,7 +145,16 @@ def main(image_file, geotif, ee_asset_path, bucket):
 	file_in_bucket = bucket + "/" + basename
 	buck2ee(file_in_bucket, ee_asset_path)
 
+	if public:
+
+		# wait for task to finish
+		task = getMostRecentTask()
+		wait4task(task)
+
+		# change access to public
+		makeAssetPublic(ee_asset_path)
+
 	return
 
 if __name__ == '__main__':
-	main(image_file=config.input_image, geotif=config.geotif_image, ee_asset_path=config.ee_asset, bucket=config.bucket)
+	main(image_file=config.input_image, geotif=config.geotif_image, ee_asset_path=config.ee_asset, bucket=config.bucket, public=True)
