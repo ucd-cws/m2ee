@@ -1,0 +1,1 @@
+%USERPROFILE%\AppData\Local\Continuum\Anaconda3\Scripts\activate.bat m2eepy27 && python erasebucket.py

@@ -16,3 +16,6 @@ geotif_image = os.path.join(dir_path, "image", "upload2ee.tif")
 
 # path to earthenginge image collection
 ee_ic = "users/ucd-cws-ee-data/kern/imageuploads"
+
+# folder to upload
+upload_folder = os.path.join(dir_path, "uploads")
