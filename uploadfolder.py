@@ -4,15 +4,8 @@ import glob
 import img2ee
 import config
 
-# get list of all files in a folder
-# current wd
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-# folder to upload
-upload_folder = os.path.join(dir_path, "uploads")
-
 # geotif folder
-tif_folder = os.path.join(dir_path, "uploads", "geotiffs")
+tif_folder = os.path.join(config.upload_folder, "geotiffs")
 
 # make geotif folder if it doesn't already exist
 if not os.path.exists(tif_folder):
